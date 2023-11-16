@@ -11,7 +11,7 @@
     "cdk": "cdk"
   },
   "license": "MIT-0",
-  "repository": "https://github.com/aws-samples/aws-cdk-pipelines-eks-cluster",
+  "repository": "https://github.com/touchstone-id/aws-cdk-pipelines-eks-cluster",
   "devDependencies": {
     "@aws-cdk/assert": "1.121.0",
     "@types/jest": "^26.0.10",

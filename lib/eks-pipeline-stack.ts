@@ -1,4 +1,6 @@
 import * as cdk from "aws-cdk-lib";
+import { KubectlLayer } from 'aws-cdk-lib/lambda-layer-kubectl';
+
 
 import eks = require("aws-cdk-lib/aws-eks");
 import * as ssm from "aws-cdk-lib/aws-ssm";
@@ -33,8 +35,11 @@ export class EksPipelineStack extends cdk.Stack {
     const clusterANameSuffix = "blue";
     const clusterBNameSuffix = "green";
 
+    const kubectlLayer = new KubectlLayer(this, "KubectlLayer");
+
     const eksClusterStageA = new EksClusterStage(this, "EKSClusterA", {
       clusterVersion: eks.KubernetesVersion.V1_28,
+      kubectlLayer: kubectlLayer,
       nameSuffix: clusterANameSuffix,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,
@@ -44,6 +49,7 @@ export class EksPipelineStack extends cdk.Stack {
 
     const eksClusterStageB = new EksClusterStage(this, "EKSClusterB", {
       clusterVersion: eks.KubernetesVersion.V1_29,
+      kubectlLayer: kubectlLayer,
       nameSuffix: clusterBNameSuffix,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,

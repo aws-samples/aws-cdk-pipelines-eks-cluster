@@ -1,12 +1,12 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
+import { Construct } from 'constructs';
+import eks = require("aws-cdk-lib/aws-eks");
 
 export interface PrometheusProps {
   cluster: eks.Cluster;
 }
 
-export class Prometheus extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: PrometheusProps) {
+export class Prometheus extends Construct {
+  constructor(scope: Construct, id: string, props: PrometheusProps) {
     super(scope, id);
 
     props.cluster.addHelmChart("Prometheus", {

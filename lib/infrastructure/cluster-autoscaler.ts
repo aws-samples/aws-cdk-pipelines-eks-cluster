@@ -1,13 +1,13 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
-import iam = require("@aws-cdk/aws-iam");
+import { Construct } from 'constructs';
+import eks = require("aws-cdk-lib/aws-eks");
+import iam = require("aws-cdk-lib/aws-iam");
 
 export interface ClusterAutoScalerProps {
   cluster: eks.Cluster;
 }
 
-export class ClusterAutoscaler extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: ClusterAutoScalerProps) {
+export class ClusterAutoscaler extends Construct {
+  constructor(scope: Construct, id: string, props: ClusterAutoScalerProps) {
     super(scope, id);
 
     const caServiceAccount = props.cluster.addServiceAccount(

@@ -1,17 +1,18 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
-import * as ssm from "@aws-cdk/aws-ssm";
+import * as cdk from "aws-cdk-lib";
+
+import eks = require("aws-cdk-lib/aws-eks");
+import * as ssm from "aws-cdk-lib/aws-ssm";
 import {
   CodePipeline,
   CodePipelineSource,
   ShellStep,
   ManualApprovalStep,
-} from "@aws-cdk/pipelines";
+} from "aws-cdk-lib/pipelines";
 import { EksClusterStage } from "./eks-cluster-stage";
 import { AppDnsStage } from "./app-dns-stage";
 
 export class EksPipelineStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const pipeline = new CodePipeline(this, "Pipeline", {

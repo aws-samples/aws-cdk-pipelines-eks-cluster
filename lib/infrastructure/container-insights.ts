@@ -1,13 +1,13 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
-import iam = require("@aws-cdk/aws-iam");
+import { Construct } from 'constructs';
+import eks = require("aws-cdk-lib/aws-eks");
+import iam = require("aws-cdk-lib/aws-iam");
 
 export interface ContainerInsightsProps {
   cluster: eks.Cluster;
 }
 
-export class ContainerInsights extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: ContainerInsightsProps) {
+export class ContainerInsights extends Construct {
+  constructor(scope: Construct, id: string, props: ContainerInsightsProps) {
     super(scope, id);
 
     const cwNamespace = props.cluster.addManifest("amazon-cloudwatch", {

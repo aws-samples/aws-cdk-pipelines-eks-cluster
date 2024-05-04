@@ -1,12 +1,13 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
+import { Construct } from 'constructs';
+
+import eks = require("aws-cdk-lib/aws-eks");
 
 export interface CalicoProps {
   cluster: eks.Cluster;
 }
 
-export class Calico extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: CalicoProps) {
+export class Calico extends Construct {
+  constructor(scope: Construct, id: string, props: CalicoProps) {
     super(scope, id);
 
     props.cluster.addHelmChart("Calico", {

@@ -1,5 +1,6 @@
-import eks = require("@aws-cdk/aws-eks");
-import { Construct, Environment, StackProps, Stage } from "@aws-cdk/core";
+import { Construct } from 'constructs';
+import eks = require("aws-cdk-lib/aws-eks");
+import { Environment, StackProps, Stage } from "aws-cdk-lib";
 import { EksClusterStack } from "./eks-cluster-stack";
 
 export interface EksClusterStageProps extends StackProps {
@@ -12,7 +13,7 @@ export class EksClusterStage extends Stage {
   constructor(scope: Construct, id: string, props: EksClusterStageProps) {
     super(scope, id, props);
 
-    new EksClusterStack(this, "EKSCluster", {
+    new EksClusterStack(this, id+"Stack", {
       tags: {
         Application: "EKSCluster",
         Environment: id,

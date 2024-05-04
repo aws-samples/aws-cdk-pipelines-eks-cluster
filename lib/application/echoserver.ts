@@ -1,5 +1,5 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
+import { Construct } from 'constructs';
+import eks = require("aws-cdk-lib/aws-eks");
 
 export interface EchoserverProps {
   cluster: eks.Cluster;
@@ -7,8 +7,8 @@ export interface EchoserverProps {
   domainName: string;
 }
 
-export class Echoserver extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: EchoserverProps) {
+export class Echoserver extends Construct {
+  constructor(scope: Construct, id: string, props: EchoserverProps) {
     super(scope, id);
 
     const appLabel = { app: "echoserver" };

@@ -1,13 +1,14 @@
-import * as cdk from "@aws-cdk/core";
-import * as route53 from "@aws-cdk/aws-route53";
-import * as ssm from "@aws-cdk/aws-ssm";
+import * as cdk from "aws-cdk-lib";
+import * as route53 from "aws-cdk-lib/aws-route53";
+import * as ssm from "aws-cdk-lib/aws-ssm";
+import { Construct } from 'constructs';
 
 export interface AppDnsStackProps extends cdk.StackProps {
   envName: string;
 }
 
 export class AppDnsStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props: AppDnsStackProps) {
+  constructor(scope: Construct, id: string, props: AppDnsStackProps) {
     super(scope, id, props);
 
     const hostZoneId = ssm.StringParameter.valueForStringParameter(

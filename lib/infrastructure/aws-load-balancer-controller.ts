@@ -1,6 +1,7 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
-import iam = require("@aws-cdk/aws-iam");
+import { Construct } from 'constructs';
+
+import eks = require("aws-cdk-lib/aws-eks");
+import iam = require("aws-cdk-lib/aws-iam");
 import * as path from "path";
 import { readFileSync } from "fs";
 
@@ -8,9 +9,9 @@ export interface AWSLoadBalancerControllerProps {
   cluster: eks.Cluster;
 }
 
-export class AWSLoadBalancerController extends cdk.Construct {
+export class AWSLoadBalancerController extends Construct {
   constructor(
-    scope: cdk.Construct,
+    scope: Construct,
     id: string,
     props: AWSLoadBalancerControllerProps
   ) {

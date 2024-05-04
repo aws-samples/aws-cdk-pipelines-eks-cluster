@@ -1,6 +1,6 @@
-import * as cdk from "@aws-cdk/core";
-import eks = require("@aws-cdk/aws-eks");
-import iam = require("@aws-cdk/aws-iam");
+import { Construct } from 'constructs';
+import eks = require("aws-cdk-lib/aws-eks");
+import iam = require("aws-cdk-lib/aws-iam");
 
 export interface ExternalDNSProps {
   cluster: eks.Cluster;
@@ -8,8 +8,8 @@ export interface ExternalDNSProps {
   domainFilters: string[];
 }
 
-export class ExternalDNS extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: ExternalDNSProps) {
+export class ExternalDNS extends Construct {
+  constructor(scope: Construct, id: string, props: ExternalDNSProps) {
     super(scope, id);
 
     const externalDnsServiceAccount = props.cluster.addServiceAccount(

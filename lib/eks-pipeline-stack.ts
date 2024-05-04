@@ -34,7 +34,7 @@ export class EksPipelineStack extends cdk.Stack {
     const clusterBNameSuffix = "green";
 
     const eksClusterStageA = new EksClusterStage(this, "EKSClusterA", {
-      clusterVersion: eks.KubernetesVersion.V1_20,
+      clusterVersion: eks.KubernetesVersion.V1_28,
       nameSuffix: clusterANameSuffix,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,
@@ -43,7 +43,7 @@ export class EksPipelineStack extends cdk.Stack {
     });
 
     const eksClusterStageB = new EksClusterStage(this, "EKSClusterB", {
-      clusterVersion: eks.KubernetesVersion.V1_21,
+      clusterVersion: eks.KubernetesVersion.V1_29,
       nameSuffix: clusterBNameSuffix,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,

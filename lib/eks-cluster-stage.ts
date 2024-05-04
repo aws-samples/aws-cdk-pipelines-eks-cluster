@@ -13,7 +13,7 @@ export class EksClusterStage extends Stage {
   constructor(scope: Construct, id: string, props: EksClusterStageProps) {
     super(scope, id, props);
 
-    new EksClusterStack(this, id+"Stack", {
+    new EksClusterStack(this, "EKSCluster", {
       tags: {
         Application: "EKSCluster",
         Environment: id,
